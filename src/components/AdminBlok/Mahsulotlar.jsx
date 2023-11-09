@@ -2,10 +2,10 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import { IconDelete, IconMell } from "../../assets/style/adminimage/IconAdmin";
-import { NavLink } from "react-router-dom";
 import ProductDelete from "../modals/products/ProductDelete";
 import ProductAdd from "../modals/products/ProductAdd";
 import ProductEdite from "../modals/products/ProductEdite";
+import "./_Mahsulotlar.scss";
 
 function Mahsulotlar() {
   const [id, setId] = useState();
@@ -41,82 +41,103 @@ function Mahsulotlar() {
   console.log(product);
 
   return (
-    <div className="relative m-auto mt-10 w-[1086px]">
-      <table className="w-[1086px]  border ">
-        <thead className="h-[50px]  text-black">
-          <tr>
-            <th>Mahsulot nomlari</th>
-            <th>Toifalar</th>
-            <th>Narxi</th>
-            <th>Yuklama</th>
-            <th>Razmeri</th>
-            <th>Status</th>
-            <th className="mr-10"> </th>
-          </tr>
-        </thead>
-        {product ? (
-          product.map((item) => (
-            <tbody className="h-[59px] border text-center" key={item.id}>
-              <tr>
-                <td>{item.name}</td>
-                <td>{item.category}</td>
-                <td>{item.cost}</td>
-                <td>
-                  {item.weight} <span>kg</span>
-                </td>
-                <td>{item.size}</td>
-                <td>
-                  <div
-                    className="relative mx-auto flex  h-[17px] w-[38px] items-center rounded-[50px] bg-green-200 p-[0px]"
-                    // onClick={cheekNew}
-                  >
+    <>
+      <div className=" m-auto mt-10 h-[598px] w-[1086px]">
+        <div className="header mb-4 flex items-center justify-between ">
+          <div className="header_left">
+            <h1>
+              You’ve got <span className="text-blue-800">7 book </span>
+            </h1>
+            <p>Your task today</p>
+          </div>
+          <div className="header_right flex items-center  ">
+            <div className=" mx-3  items-center p-2">
+              <input
+                type="text"
+                id="text"
+                name="text"
+                className="w-full rounded border px-4 py-2 focus:border-blue-400 focus:outline-none"
+                placeholder="Enter your name"
+                required
+              />
+            </div>
+            <button
+              className=" h-[40px] w-[135] rounded border bg-[#01384D] px-4 py-2 text-white"
+              onClick={() => handleAdd()}
+            >
+              + Create a book
+            </button>
+          </div>
+        </div>
+        <table className="w-[1086px]  border ">
+          <thead className="h-[50px]  text-black">
+            <tr>
+              <th>Mahsulot nomlari</th>
+              <th>Toifalar</th>
+              <th>Narxi</th>
+              <th>Yuklama</th>
+              <th>Razmeri</th>
+              <th>Status</th>
+              <th className="mr-10"> </th>
+            </tr>
+          </thead>
+          {product ? (
+            product.map((item) => (
+              <tbody className="h-[59px] border text-center" key={item.id}>
+                <tr>
+                  <td>{item.name}</td>
+                  <td>{item.category}</td>
+                  <td>{item.cost}</td>
+                  <td>
+                    {item.weight} <span>kg</span>
+                  </td>
+                  <td>{item.size}</td>
+                  <td>
+                    <div
+                      className="relative mx-auto flex  h-[17px] w-[38px] items-center rounded-[50px] bg-green-200 p-[0px]"
+                      // onClick={cheekNew}
+                    >
+                      <span
+                        className={
+                          item.status !== "0"
+                            ? "absolute right-0 m-[2px]  h-[13px] w-[13px] rounded-[50px] bg-green-700"
+                            : "absolute left-0 m-[2px]  h-[13px] w-[13px] rounded-[50px] bg-white"
+                        }
+                      ></span>
+                    </div>
+                  </td>
+                  <td className="my-4 flex items-center justify-end gap-3 pr-10">
                     <span
-                      className={
-                        item.status !== "0"
-                          ? "absolute right-0 m-[2px]  h-[13px] w-[13px] rounded-[50px] bg-green-700"
-                          : "absolute left-0 m-[2px]  h-[13px] w-[13px] rounded-[50px] bg-white"
-                      }
-                    ></span>
-                  </div>
-                </td>
-                <td className="my-4 flex items-center justify-end gap-3 pr-10">
-                  <span
-                    className="flex h-[34px] w-[34px] items-center justify-center rounded bg-[#E6ECEE]"
-                    onClick={() => handleEdite(item.id)}
-                  >
-                    <IconMell />
-                  </span>
-                  <span
-                    className="flex h-[34px] w-[34px] items-center justify-center rounded bg-[#FBE9E9]"
-                    onClick={() => handleDelete(item.id)}
-                  >
-                    <IconDelete />
-                  </span>
-                </td>
-              </tr>
-            </tbody>
-          ))
-        ) : (
-          <h2>Not Found</h2>
+                      className="flex h-[34px] w-[34px] items-center justify-center rounded bg-[#E6ECEE]"
+                      onClick={() => handleEdite(item.id)}
+                    >
+                      <IconMell />
+                    </span>
+                    <span
+                      className="flex h-[34px] w-[34px] items-center justify-center rounded bg-[#FBE9E9]"
+                      onClick={() => handleDelete(item.id)}
+                    >
+                      <IconDelete />
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            ))
+          ) : (
+            <h2>Not Found</h2>
+          )}
+        </table>
+
+        {delProduct && <ProductDelete setDelProduct={setDelProduct} id={id} />}
+        {openProductEdite && (
+          <ProductEdite
+            setOpenProductEdite={setOpenProductEdite}
+            idEdite={idEdite}
+          />
         )}
-      </table>
-      <div className="mt-10 w-full text-end">
-        <button
-          className="h-[40px] w-[135] rounded border bg-[#01384D] px-7 py-2 text-white"
-          onClick={() => handleAdd()}
-        >
-          Qo'shish
-        </button>
+        {openProductAdd && <ProductAdd setOpenProductAdd={setOpenProductAdd} />}
       </div>
-      {delProduct && <ProductDelete setDelProduct={setDelProduct} id={id} />}
-      {openProductEdite && (
-        <ProductEdite
-          setOpenProductEdite={setOpenProductEdite}
-          idEdite={idEdite}
-        />
-      )}
-      {openProductAdd && <ProductAdd setOpenProductAdd={setOpenProductAdd} />}
-    </div>
+    </>
   );
 }
 

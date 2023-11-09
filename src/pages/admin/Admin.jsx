@@ -1,20 +1,16 @@
 /* eslint-disable no-unused-vars */
 import AdminHeader from "../../components/AdminHeader";
-import AdminBtn from "../../components/AdminBtn";
-import { Outlet } from "react-router-dom";
+
+import Mahsulotlar from "../../components/AdminBlok/Mahsulotlar";
 
 function Admin() {
   return (
     <>
-      <div className=" mx-auto bg-[#01384D] ">
+      <div className=" mx-auto  bg-gray-500 ">
         <AdminHeader />
-        <div className=" m-auto flex w-[1345px] justify-between">
-          <div className="">
-            <AdminBtn />
-          </div>
-          <div className=" h-[85vh] w-[100%] bg-white ">
-            <Outlet />
-          </div>
+
+        <div className="mx-auto mb-3 w-[1340px]">
+          <Mahsulotlar />
         </div>
       </div>
     </>

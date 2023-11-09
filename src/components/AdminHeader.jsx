@@ -37,7 +37,6 @@ function AdminHeader() {
           </div>
         </div>
       </div>
-      <Mahsulotlar />
     </>
   );
 }
