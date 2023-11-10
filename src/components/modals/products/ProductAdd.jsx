@@ -74,181 +74,98 @@ function ProductAdd({ setOpenProductAdd }) {
   const categories = data && data.categories;
 
   return (
-    <div
-      className="font-Montserrat     fixed left-[120px]
-    top-16 flex w-[1130px] justify-evenly rounded-lg  border bg-white p-6 shadow-2xl shadow-black "
-    >
-      <form className="flex gap-8" onSubmit={handlePost}>
-        <div>
-          <h3 className="mb-2 text-[18px] font-semibold">Ozgartirish</h3>
-          <input
-            type="file"
-            className="flex  h-[230px] w-[230px] items-center justify-center  rounded bg-[#013d4d2c]"
-            onChange={handleImg}
-            required
-            name="fileInput"
-          />
-        </div>
-        <div className="flex justify-between gap-4">
-          <div>
-            <label className="block pt-8" htmlFor="Toifalar">
-              Toifalar
-            </label>
-            <select
-              className="mt-2 h-[40px] w-[220px] rounded border pl-3 "
-              ref={category}
-              required
-              name="Toifalar border-none"
-              id="Toifalar"
-            >
-              {categories ? (
-                categories.map((item) => (
-                  <option className=" p-5" value={item.category} key={item.id}>
-                    {item.category}
-                  </option>
-                ))
-              ) : (
-                <option>Loding...</option>
-              )}
-            </select>
-            <label className="mt-4 block" htmlFor="Tovarnomi">
-              Tovar nomi
-            </label>
-            <input
-              className="mt-2 h-[40px] w-[220px] rounded border pl-3"
-              ref={name}
-              required
-              type="text"
-              placeholder="masalan: Lux Soft Memory"
-              id="Tovarnomi"
-            />
-            <label className="mt-4 block" htmlFor="Narxi">
-              Narxi
-            </label>
-            <input
-              className="mt-2 h-[40px] w-[220px] rounded border pl-3"
-              ref={cost}
-              required
-              type="text"
-              id="Narxi"
-              placeholder="masalan: 20 000"
-            />
-            <label className="mt-4 block" htmlFor="Yuklama">
-              Yuklama
-            </label>
-            <input
-              className="mt-2 h-[40px] w-[220px] rounded border pl-3"
-              ref={weight}
-              required
-              type="text"
-              id="Yuklama"
-              placeholder="masalan: 200 kg"
-            />
+    <>
+      <div
+        className="font-Montserrat     fox  fixed
+    left-[700px] top-20 flex w-[400px] rounded-lg  border bg-white p-6 shadow-2xl shadow-black "
+      >
+        <div className="content">
+          <div className="content_header flex justify-around">
+            <div className="">
+              <h3>Create a book </h3>
+            </div>
+
+            <div onClick={() => setOpenProductAdd(false)}>
+              <CrossBtn />
+            </div>
           </div>
-          <div>
-            <label className="mt-8 block " htmlFor="Razmeri">
-              Razmeri
-            </label>
-            <input
-              className="mt-2 h-[40px] w-[220px] rounded border pl-3"
-              ref={size}
-              required
-              type="text"
-              id="Razmeri"
-              placeholder="masalan: 200 x 140 x 40"
-            />
-            <label
-              className="mt-4 block
+          <div className="product_add mx-20">
+            <form className="flex" onSubmit={handlePost}>
+              <div className="mt-5">
+                <div>
+                  <label className="mt-4 block" htmlFor="Tovarnomi">
+                    Title
+                  </label>
+                  <input
+                    className="w-full rounded border px-4 py-2 focus:border-blue-400 focus:outline-none"
+                    ref={name}
+                    required
+                    type="text"
+                    placeholder="Enter your title"
+                    id="Tovarnomi"
+                  />
+                  <label className="mt-4 block" htmlFor="Narxi">
+                    Author
+                  </label>
+                  <input
+                    className="w-full rounded border px-4 py-2 focus:border-blue-400 focus:outline-none"
+                    ref={cost}
+                    required
+                    type="text"
+                    id="Narxi"
+                    placeholder="Enter your author"
+                  />
+                  <label className="mt-4 block" htmlFor="Yuklama">
+                    Cover
+                  </label>
+                  <input
+                    className="w-full rounded border px-4 py-2 focus:border-blue-400 focus:outline-none"
+                    ref={weight}
+                    required
+                    type="text"
+                    id="Yuklama"
+                    placeholder="Enter your cover"
+                  />
+                </div>
+                <div>
+                  <label className="mt-8 block " htmlFor="Razmeri">
+                    Razmeri
+                  </label>
+                  <input
+                    className="w-full rounded border px-4 py-2 focus:border-blue-400 focus:outline-none"
+                    ref={size}
+                    required
+                    type="text"
+                    id="Razmeri"
+                    placeholder="masalan: 200 x 140 x 40"
+                  />
+                  <label
+                    className="mt-4 block
             "
-              htmlFor="Kafolat"
-            >
-              Kafolat
-            </label>
-            <input
-              className=" mt-2 h-[40px] w-[220px] rounded border pl-3"
-              ref={warranty}
-              required
-              type="text"
-              placeholder="masalan: 1 yil"
-              id="Kafolat"
-            />
-            <label
-              className="mt-4
-            block"
-              htmlFor="Sigm"
-            >
-              Sigm
-            </label>
-            <input
-              className="mt-2 h-[40px] w-[220px] rounded border pl-3"
-              ref={capacity}
-              required
-              type="text"
-              id="Sigm"
-              placeholder="masalan:2"
-            />
-            <label className="mt-4 block" htmlFor="Aksiya Narxi">
-              Aksiya Narxi
-            </label>
-            <input
-              className="mt-2 h-[40px] w-[220px] rounded border pl-3"
-              ref={newCost}
-              type="Text"
-              id="Aksiya Narxi"
-              placeholder="masalan: 1 200 000"
-            />
-          </div>
-          <div>
-            <label className="mt-8 block" htmlFor="Ma'lumot">
-              Malumot
-            </label>
-            <textarea
-              className="mt-2 h-[127px] w-[220px] rounded border p-3"
-              ref={body}
-              required
-              placeholder="info..."
-              id="Ma'lumot"
-            ></textarea>
-            <div className="mt-4 flex items-center">
-              <p>New</p>
-              <div
-                className="relative mx-auto flex  h-[17px] w-[38px] items-center rounded-[50px] bg-green-200 p-[0px]"
-                onClick={cheekNew}
-              >
-                <span
-                  className={
-                    isNew
-                      ? "absolute right-0 m-[2px]  h-[13px] w-[13px] rounded-[50px] bg-green-700"
-                      : "absolute left-0 m-[2px]  h-[13px] w-[13px] rounded-[50px] bg-white"
-                  }
-                ></span>
+                    htmlFor="Kafolat"
+                  >
+                    Kafolat
+                  </label>
+                  <input
+                    className="w-full rounded border px-4 py-2 focus:border-blue-400 focus:outline-none"
+                    ref={warranty}
+                    required
+                    type="text"
+                    placeholder="masalan: 1 yil"
+                    id="Kafolat"
+                  />
+                </div>
+                <div>
+                  <button className="mt-[45px] h-[45px] w-[220px] rounded bg-[#01384D] text-white">
+                    Qoshish
+                  </button>
+                </div>
               </div>
-            </div>
-            <div className="mt-4 flex items-center">
-              <p>Active</p>
-              <div
-                className="relative mx-auto flex h-[17px] w-[38px] items-center rounded-[50px] bg-green-200 p-[1px]"
-                onClick={cheekActive}
-              >
-                <span
-                  className={
-                    isActive
-                      ? "absolute right-0 m-[2px]  h-[13px] w-[13px] rounded-[50px] bg-green-700"
-                      : "absolute left-0 m-[2px]  h-[13px] w-[13px] rounded-[50px] bg-green-400"
-                  }
-                ></span>
-              </div>
-            </div>
-            <button className="mt-[45px] h-[45px] w-[220px] rounded bg-[#01384D] text-white">
-              Qoshish
-            </button>
+            </form>
           </div>
         </div>
-      </form>
-      <div onClick={() => setOpenProductAdd(false)}>
-        <CrossBtn />
       </div>
-    </div>
+    </>
   );
 }
 

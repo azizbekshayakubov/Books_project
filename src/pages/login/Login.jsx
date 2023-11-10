@@ -65,7 +65,7 @@ export default function Login({ data }) {
                   required
                 />
               </div>
-              <div className="mb-4">
+              {/* <div className="mb-4">
                 <label htmlFor="email" className="block text-gray-600">
                   Email
                 </label>
@@ -77,9 +77,9 @@ export default function Login({ data }) {
                   placeholder="Your email"
                   required
                 />
-              </div>
+              </div> */}
 
-              <div className="mb-4">
+              {/* <div className="mb-4">
                 <label htmlFor="username" className="block text-gray-600">
                   Username
                 </label>
@@ -92,7 +92,7 @@ export default function Login({ data }) {
                   placeholder="Your username"
                   required
                 />
-              </div>
+              </div> */}
               <div className="mb-4">
                 <label htmlFor="password" className="block text-gray-600">
                   Password
