@@ -43,19 +43,15 @@ function ProductAdd({ setOpenProductAdd }) {
 
     var formdata = new FormData();
     formdata.append("name", name.current.value);
-    formdata.append("category", category.current.value);
-    formdata.append("weight", weight.current.value);
-    formdata.append("images", img);
-    formdata.append("isActive", isActive);
-    formdata.append("warranty", warranty.current.value);
-    formdata.append("size", size.current.value);
-    formdata.append("capacity", capacity.current.value);
-    formdata.append("body", body.current.value);
-    formdata.append("cost", cost.current.value);
-    formdata.append("newCost", newCost.current.value);
-    formdata.append("discount", newCost.current.value ? true : false);
-    formdata.append("new", isNew);
-
+    // formdata.append("category", category.current.value);
+    // formdata.append("weight", weight.current.value);
+    // formdata.append("images", img);
+    // formdata.append("isActive", isActive);
+    // formdata.append("warranty", warranty.current.value);
+    // formdata.append("size", size.current.value);
+    // formdata.append("capacity", capacity.current.value);
+    // formdata.append("body", body.current.value);
+    // formdata.append("cost", cost.current.value);
     const requestOptions = {
       method: "POST",
       headers: myHeaders,
@@ -77,7 +73,7 @@ function ProductAdd({ setOpenProductAdd }) {
     <>
       <div
         className="font-Montserrat     fox  fixed
-    left-[700px] top-20 flex w-[400px] rounded-lg  border bg-white p-6 shadow-2xl shadow-black "
+    left-[750px] top-20 flex w-[380px] rounded-lg  border bg-white p-6 shadow-2xl shadow-black "
       >
         <div className="content">
           <div className="content_header flex justify-around">
@@ -129,7 +125,7 @@ function ProductAdd({ setOpenProductAdd }) {
                 </div>
                 <div>
                   <label className="mt-8 block " htmlFor="Razmeri">
-                    Razmeri
+                    Published
                   </label>
                   <input
                     className="w-full rounded border px-4 py-2 focus:border-blue-400 focus:outline-none"
@@ -137,21 +133,21 @@ function ProductAdd({ setOpenProductAdd }) {
                     required
                     type="text"
                     id="Razmeri"
-                    placeholder="masalan: 200 x 140 x 40"
+                    placeholder="Enter your published"
                   />
                   <label
                     className="mt-4 block
             "
                     htmlFor="Kafolat"
                   >
-                    Kafolat
+                    Pages
                   </label>
                   <input
                     className="w-full rounded border px-4 py-2 focus:border-blue-400 focus:outline-none"
                     ref={warranty}
                     required
                     type="text"
-                    placeholder="masalan: 1 yil"
+                    placeholder="Enter your pages"
                     id="Kafolat"
                   />
                 </div>
